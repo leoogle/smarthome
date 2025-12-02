@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ userName }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="perfil-content">
+  <div class="perfil-container">
+    <form [formGroup]="perfilForm" (ngSubmit)="onSave()">
+      <ion-item class="info-item">
+        <ion-label position="stacked">Información residente</ion-label>
+        <ion-input 
+          type="text" 
+          formControlName="informacion1"
+          placeholder="Información del residente">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="info-item">
+        <ion-label position="stacked">Información residente</ion-label>
+        <ion-input 
+          type="text" 
+          formControlName="informacion2"
+          placeholder="Información adicional">
+        </ion-input>
+      </ion-item>
+
+      <ion-button 
+        expand="block" 
+        type="submit"
+        class="save-button"
+        [disabled]="!perfilForm.valid">
+        GUARDAR
+      </ion-button>
+    </form>
+
+    <div class="menu-items">
+      <div 
+        *ngFor="let item of menuItems; let i = index" 
+        class="menu-item"
+        (click)="toggleItem(i)">
+        <div class="menu-icon">
+          <span>{{ item.icon }}</span>
+        </div>
+        <span class="menu-text">{{ item.name }}</span>
+        <ion-icon 
+          [name]="item.checked ? 'checkmark-circle' : 'checkmark-circle-outline'"
+          class="check-icon"
+          [class.checked]="item.checked">
+        </ion-icon>
+      </div>
+    </div>
+  </div>
+</ion-content>
+

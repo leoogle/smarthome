@@ -1,0 +1,8 @@
+{
+  "name": "smart-home",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
+

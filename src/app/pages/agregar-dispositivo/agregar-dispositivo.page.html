@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Agregar Dispositivo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="agregar-dispositivo-content">
+  <div class="agregar-dispositivo-container">
+    <h2 class="page-title">Nuevo Dispositivo IoT</h2>
+
+    <form [formGroup]="dispositivoForm" (ngSubmit)="onAddDevice()">
+      <ion-item class="form-item">
+        <ion-label position="stacked">Nombre del dispositivo</ion-label>
+        <ion-input 
+          type="text" 
+          formControlName="name"
+          placeholder="Ej: Sensor de temperatura">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="form-item">
+        <ion-label position="stacked">Tipo de dispositivo</ion-label>
+        <ion-select formControlName="type" placeholder="Selecciona un tipo">
+          <ion-select-option *ngFor="let type of deviceTypes" [value]="type.value">
+            {{ type.label }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="form-item">
+        <ion-label position="stacked">Ubicación (opcional)</ion-label>
+        <ion-input 
+          type="text" 
+          formControlName="location"
+          placeholder="Ej: Sala, Cocina, Dormitorio">
+        </ion-input>
+      </ion-item>
+
+      <ion-button 
+        expand="block" 
+        type="submit"
+        class="add-button"
+        [disabled]="!dispositivoForm.valid">
+        <ion-icon name="add" slot="start"></ion-icon>
+        AGREGAR DISPOSITIVO
+      </ion-button>
+    </form>
+  </div>
+</ion-content>
+

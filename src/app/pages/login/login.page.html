@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="login-content">
+  <div class="login-container">
+    <h1 class="app-title">Smart Home</h1>
+    
+    <div class="login-card">
+      <h2 class="login-title">Iniciar sesión</h2>
+      
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <ion-item class="form-item">
+          <ion-label position="stacked">E-mail</ion-label>
+          <ion-input 
+            type="email" 
+            formControlName="email"
+            placeholder="tu@email.com">
+          </ion-input>
+        </ion-item>
+        
+        <ion-item class="form-item">
+          <ion-label position="stacked">Contraseña</ion-label>
+          <ion-input 
+            type="password" 
+            formControlName="password"
+            placeholder="••••••••">
+          </ion-input>
+        </ion-item>
+        
+        <div class="forgot-password">
+          <ion-button fill="clear" (click)="goToForgotPassword()">
+            Olvidé mi contraseña
+          </ion-button>
+        </div>
+        
+        <ion-button 
+          expand="block" 
+          type="submit"
+          class="login-button"
+          [disabled]="!loginForm.valid">
+          <ion-icon name="play" slot="start"></ion-icon>
+          INGRESAR
+        </ion-button>
+      </form>
+      
+      <div class="register-link">
+        <p>¿No tienes cuenta? 
+          <ion-button fill="clear" (click)="goToRegister()">
+            Regístrate
+          </ion-button>
+        </p>
+      </div>
+    </div>
+  </div>
+</ion-content>
+

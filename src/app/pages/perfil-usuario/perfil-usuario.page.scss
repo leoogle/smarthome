@@ -1,0 +1,85 @@
+.perfil-content {
+  --background: #f4f5f8;
+}
+
+.perfil-container {
+  padding: 20px;
+}
+
+.info-item {
+  --background: #ffffff;
+  --border-radius: 10px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  
+  ion-label {
+    color: #666;
+    font-weight: 500;
+  }
+  
+  ion-input {
+    --color: #222428;
+  }
+}
+
+.save-button {
+  --background: #3880ff;
+  --color: #ffffff;
+  --border-radius: 10px;
+  height: 50px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.menu-items {
+  margin-top: 30px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:active {
+    background: #f0f0f0;
+  }
+}
+
+.menu-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #5260ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  
+  span {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+}
+
+.menu-text {
+  flex: 1;
+  color: #222428;
+  font-weight: 500;
+}
+
+.check-icon {
+  font-size: 1.5rem;
+  color: #ccc;
+  
+  &.checked {
+    color: #5260ff;
+  }
+}
+

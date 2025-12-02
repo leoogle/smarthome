@@ -1,0 +1,110 @@
+.dashboard-content {
+  --background: #f4f5f8;
+}
+
+.dashboard-container {
+  padding: 20px;
+}
+
+.options-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  padding: 20px 0;
+}
+
+.option-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  ion-icon {
+    font-size: 2rem;
+    color: #999;
+    margin-bottom: 5px;
+    
+    &.filled {
+      color: #3880ff;
+    }
+  }
+
+  span {
+    font-size: 0.7rem;
+    color: #666;
+    font-weight: 600;
+  }
+
+  &.active {
+    background: #3880ff;
+    border-color: #3880ff;
+    
+    span {
+      color: #ffffff;
+    }
+    
+    ion-icon {
+      color: #ffffff;
+    }
+  }
+}
+
+.description {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.servicios-section {
+  .servicios-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #222428;
+    margin-bottom: 15px;
+  }
+}
+
+.servicio-item {
+  --background: #ffffff;
+  --border-radius: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:active {
+    --background: #f0f0f0;
+  }
+
+  .servicio-icon {
+    font-size: 1.5rem;
+    color: #3880ff;
+    margin-right: 15px;
+  }
+
+  ion-label {
+    font-weight: 500;
+    color: #222428;
+  }
+
+  .arrow-icon {
+    font-size: 1.2rem;
+    color: #3880ff;
+  }
+}
+
