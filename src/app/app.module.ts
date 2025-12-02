@@ -6,9 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TabsMenuComponent } from './components/tabs-menu/tabs-menu.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TabsMenuComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

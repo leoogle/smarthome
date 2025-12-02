@@ -1,2 +1,10 @@
 // App Component Styles
 
+.app-container {
+  min-height: 100vh;
+  
+  &.with-tabs {
+    padding-bottom: 70px; // Espacio para el menú de tabs
+  }
+}
+

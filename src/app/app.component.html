@@ -1,4 +1,7 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <div class="app-container" [class.with-tabs]="showTabs()">
+    <ion-router-outlet></ion-router-outlet>
+  </div>
+  <app-tabs-menu *ngIf="showTabs()"></app-tabs-menu>
 </ion-app>
 

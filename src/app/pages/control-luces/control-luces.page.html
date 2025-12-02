@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Control de Luces</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="control-luces-content">
+  <div class="control-luces-container">
+    <h2 class="page-title">Iluminación del Hogar</h2>
+
+    <div *ngIf="dispositivos.length === 0" class="empty-state">
+      <ion-icon name="bulb-outline" class="empty-icon"></ion-icon>
+      <p>No hay dispositivos de iluminación conectados</p>
+    </div>
+
+    <ion-list *ngIf="dispositivos.length > 0">
+      <ion-item 
+        *ngFor="let dispositivo of dispositivos" 
+        class="dispositivo-item">
+        <div class="device-content">
+          <div class="device-header">
+            <ion-icon [name]="dispositivo.icon" class="device-icon"></ion-icon>
+            <div class="device-info">
+              <h2>{{ dispositivo.name }}</h2>
+              <p>{{ dispositivo.location }}</p>
+              <p [class.connected]="dispositivo.status === 'connected'" 
+                 [class.disconnected]="dispositivo.status === 'disconnected'">
+                {{ dispositivo.status === 'connected' ? 'Conectado' : 'Desconectado' }}
+              </p>
+            </div>
+            <ion-toggle 
+              [checked]="dispositivo.value?.on"
+              (ionChange)="toggleLight(dispositivo)">
+            </ion-toggle>
+          </div>
+          
+          <div *ngIf="dispositivo.value?.on" class="brightness-control">
+            <ion-label>Brillo: {{ dispositivo.value?.brightness }}%</ion-label>
+            <ion-range 
+              min="0" 
+              max="100" 
+              step="10"
+              [value]="getBrightness(dispositivo)"
+              (ionChange)="adjustBrightness(dispositivo, $event)">
+            </ion-range>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+

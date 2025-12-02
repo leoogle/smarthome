@@ -1,0 +1,195 @@
+.metricas-content {
+  --background: #f4f5f8;
+}
+
+.metricas-container {
+  padding: 20px;
+}
+
+.period-selector {
+  margin-bottom: 20px;
+  
+  ion-segment {
+    --background: #ffffff;
+    border-radius: 10px;
+    padding: 4px;
+  }
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.summary-card {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  &.water-summary {
+    border-left: 4px solid #3dc2ff;
+  }
+  
+  &.electricity-summary {
+    border-left: 4px solid #ffc409;
+  }
+}
+
+.summary-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  
+  ion-icon {
+    font-size: 1.8rem;
+    margin-right: 10px;
+  }
+  
+  &.water-summary ion-icon {
+    color: #3dc2ff;
+  }
+  
+  &.electricity-summary ion-icon {
+    color: #ffc409;
+  }
+  
+  h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222428;
+  }
+}
+
+.summary-values {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  .label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #222428;
+  }
+}
+
+.history-section {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #222428;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+.history-item {
+  --background: #f8f9fa;
+  --border-radius: 10px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  
+  ion-label {
+    h3 {
+      font-weight: 600;
+      color: #222428;
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.history-details {
+  display: flex;
+  gap: 20px;
+  
+  p {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+    
+    ion-icon {
+      margin-right: 5px;
+      
+      &.water-icon {
+        color: #3dc2ff;
+      }
+      
+      &.electricity-icon {
+        color: #ffc409;
+      }
+    }
+  }
+}
+
+.device-consumption-section {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.device-consumption-item {
+  --background: #f8f9fa;
+  --border-radius: 10px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  padding: 15px;
+  
+  .consumption-icon {
+    font-size: 1.5rem;
+    color: #ffc409;
+  }
+  
+  ion-label {
+    h3 {
+      font-weight: 600;
+      color: #222428;
+      font-size: 0.95rem;
+      margin-bottom: 5px;
+    }
+    
+    p {
+      color: #666;
+      font-size: 0.85rem;
+      margin: 0;
+    }
+  }
+}
+
+.percentage-bar {
+  width: 100px;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-left: 10px;
+  
+  .percentage-fill {
+    height: 100%;
+    background: #ffc409;
+    transition: width 0.3s ease;
+  }
+}
+

@@ -1,0 +1,106 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Métricas Históricas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="metricas-content">
+  <div class="metricas-container">
+    <!-- Selector de período -->
+    <div class="period-selector">
+      <ion-segment [(ngModel)]="selectedPeriod" (ionChange)="onPeriodChange()">
+        <ion-segment-button *ngFor="let period of periods" [value]="period.value">
+          {{ period.label }}
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <!-- Resumen de Consumos -->
+    <div class="summary-cards">
+      <div class="summary-card water-summary">
+        <div class="summary-header">
+          <ion-icon name="water"></ion-icon>
+          <h3>Agua Potable</h3>
+        </div>
+        <div class="summary-values">
+          <div class="summary-item">
+            <span class="label">Actual:</span>
+            <span class="value">{{ currentWater }} L</span>
+          </div>
+          <div class="summary-item">
+            <span class="label">Total ({{ selectedPeriod }}d):</span>
+            <span class="value">{{ totalWater }} L</span>
+          </div>
+          <div class="summary-item">
+            <span class="label">Promedio diario:</span>
+            <span class="value">{{ averageWater }} L</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary-card electricity-summary">
+        <div class="summary-header">
+          <ion-icon name="flash"></ion-icon>
+          <h3>Electricidad</h3>
+        </div>
+        <div class="summary-values">
+          <div class="summary-item">
+            <span class="label">Actual:</span>
+            <span class="value">{{ currentElectricity }} kWh</span>
+          </div>
+          <div class="summary-item">
+            <span class="label">Total ({{ selectedPeriod }}d):</span>
+            <span class="value">{{ totalElectricity }} kWh</span>
+          </div>
+          <div class="summary-item">
+            <span class="label">Promedio diario:</span>
+            <span class="value">{{ averageElectricity }} kWh</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Historial Diario -->
+    <div class="history-section">
+      <h3 class="section-title">Historial Diario</h3>
+      <ion-list>
+        <ion-item *ngFor="let record of consumptionHistory" class="history-item">
+          <ion-label>
+            <h3>{{ formatDate(record.date) }}</h3>
+            <div class="history-details">
+              <p>
+                <ion-icon name="water" class="water-icon"></ion-icon>
+                {{ record.water }} L
+              </p>
+              <p>
+                <ion-icon name="flash" class="electricity-icon"></ion-icon>
+                {{ record.electricity }} kWh
+              </p>
+            </div>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <!-- Consumo por Dispositivo -->
+    <div class="device-consumption-section" *ngIf="deviceConsumptions.length > 0">
+      <h3 class="section-title">Consumo por Dispositivo</h3>
+      <ion-list>
+        <ion-item *ngFor="let device of deviceConsumptions" class="device-consumption-item">
+          <ion-icon name="flash-outline" slot="start" class="consumption-icon"></ion-icon>
+          <ion-label>
+            <h3>{{ device.deviceName }}</h3>
+            <p>{{ device.consumption }} kWh ({{ device.percentage }}% del total)</p>
+          </ion-label>
+          <div class="percentage-bar">
+            <div class="percentage-fill" [style.width.%]="device.percentage"></div>
+          </div>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
+

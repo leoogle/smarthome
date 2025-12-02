@@ -1,0 +1,113 @@
+.clima-content {
+  --background: #f4f5f8;
+}
+
+.clima-container {
+  padding: 20px;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #222428;
+  margin-bottom: 20px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  
+  .empty-icon {
+    font-size: 5rem;
+    color: #ccc;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    color: #666;
+    font-size: 1.1rem;
+  }
+}
+
+.dispositivo-item {
+  --background: #ffffff;
+  --border-radius: 10px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.device-content {
+  width: 100%;
+}
+
+.device-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.device-icon {
+  font-size: 2.5rem;
+  color: #3dc2ff;
+  margin-right: 15px;
+}
+
+.device-info {
+  flex: 1;
+  
+  h2 {
+    font-weight: 600;
+    color: #222428;
+    margin: 0 0 5px 0;
+  }
+  
+  p {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 2px 0;
+    
+    &.connected {
+      color: #2dd36f;
+      font-weight: 600;
+    }
+    
+    &.disconnected {
+      color: #eb445a;
+      font-weight: 600;
+    }
+  }
+}
+
+.control-section {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+  
+  .control-label {
+    display: block;
+    margin-bottom: 10px;
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  ion-range {
+    --bar-background: #e0e0e0;
+    --bar-background-active: #3dc2ff;
+    --knob-background: #3dc2ff;
+    --knob-size: 20px;
+  }
+}
+
+.temperature-display {
+  text-align: center;
+  padding: 15px;
+  
+  .temperature-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #3dc2ff;
+  }
+}
+

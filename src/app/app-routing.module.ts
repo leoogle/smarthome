@@ -34,6 +34,22 @@ const routes: Routes = [
   {
     path: 'agregar-dispositivo',
     loadChildren: () => import('./pages/agregar-dispositivo/agregar-dispositivo.module').then(m => m.AgregarDispositivoPageModule)
+  },
+  {
+    path: 'control-luces',
+    loadChildren: () => import('./pages/control-luces/control-luces.module').then(m => m.ControlLucesPageModule)
+  },
+  {
+    path: 'seguridad',
+    loadChildren: () => import('./pages/seguridad/seguridad.module').then(m => m.SeguridadPageModule)
+  },
+  {
+    path: 'clima',
+    loadChildren: () => import('./pages/clima/clima.module').then(m => m.ClimaPageModule)
+  },
+  {
+    path: 'metricas',
+    loadChildren: () => import('./pages/metricas/metricas.module').then(m => m.MetricasPageModule)
   }
 ];
 

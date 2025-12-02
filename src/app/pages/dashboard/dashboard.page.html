@@ -39,6 +39,83 @@
       <p>En esta app podrás acceder a las diferentes características para el control tecnológico de tu hogar</p>
     </div>
 
+    <!-- Métricas -->
+    <div class="metrics-section">
+      <h2 class="section-title">Métricas de Consumo</h2>
+      
+      <div class="metrics-grid">
+        <!-- Consumo de Agua -->
+        <div class="metric-card water-card">
+          <div class="metric-header">
+            <ion-icon name="water" class="metric-icon"></ion-icon>
+            <h3>Agua Potable</h3>
+          </div>
+          <div class="metric-value">
+            <span class="value">{{ currentWater }}</span>
+            <span class="unit">litros</span>
+          </div>
+          <div class="metric-footer">
+            <span class="average">Promedio: {{ averageWater }} L/día</span>
+          </div>
+        </div>
+
+        <!-- Consumo de Electricidad -->
+        <div class="metric-card electricity-card">
+          <div class="metric-header">
+            <ion-icon name="flash" class="metric-icon"></ion-icon>
+            <h3>Electricidad</h3>
+          </div>
+          <div class="metric-value">
+            <span class="value">{{ currentElectricity }}</span>
+            <span class="unit">kWh</span>
+          </div>
+          <div class="metric-footer">
+            <span class="average">Promedio: {{ averageElectricity }} kWh/día</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Estadísticas de Dispositivos -->
+      <div class="device-stats-card">
+        <div class="stats-header">
+          <ion-icon name="hardware-chip" class="stats-icon"></ion-icon>
+          <h3>Dispositivos</h3>
+        </div>
+        <div class="stats-content">
+          <div class="stat-item">
+            <span class="stat-label">Total:</span>
+            <span class="stat-value">{{ totalDevices }}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Conectados:</span>
+            <span class="stat-value connected">{{ connectedDevices }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Consumo por Dispositivo -->
+      <div class="device-consumption-section" *ngIf="deviceConsumptions.length > 0">
+        <div class="section-header">
+          <h3>Consumo por Dispositivo (7 días)</h3>
+          <ion-button fill="clear" size="small" (click)="goToMetrics()">
+            Ver más
+            <ion-icon name="chevron-forward" slot="end"></ion-icon>
+          </ion-button>
+        </div>
+        <ion-list>
+          <ion-item 
+            *ngFor="let device of deviceConsumptions.slice(0, 5)" 
+            class="consumption-item">
+            <ion-icon name="flash-outline" slot="start" class="consumption-icon"></ion-icon>
+            <ion-label>
+              <h3>{{ device.deviceName }}</h3>
+              <p>{{ device.consumption }} kWh ({{ device.percentage }}%)</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+
     <!-- Servicios -->
     <div class="servicios-section">
       <h2 class="servicios-title">Servicios</h2>

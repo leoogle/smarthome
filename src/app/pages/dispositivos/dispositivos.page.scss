@@ -13,6 +13,48 @@
   margin-bottom: 20px;
 }
 
+.categories-container {
+  margin-top: 20px;
+}
+
+.category-section {
+  margin-bottom: 30px;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background: #ffffff;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:active {
+    background: #f0f0f0;
+  }
+
+  .category-icon {
+    font-size: 1.5rem;
+    color: #3880ff;
+    margin-right: 15px;
+  }
+
+  h3 {
+    flex: 1;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #222428;
+  }
+
+  .chevron-icon {
+    color: #666;
+    font-size: 1.2rem;
+  }
+}
+
 .empty-state {
   text-align: center;
   padding: 60px 20px;

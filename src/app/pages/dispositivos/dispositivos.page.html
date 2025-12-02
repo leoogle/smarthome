@@ -24,27 +24,42 @@
       </ion-button>
     </div>
 
-    <ion-list *ngIf="dispositivos.length > 0">
-      <ion-item 
-        *ngFor="let dispositivo of dispositivos" 
-        class="dispositivo-item">
-        <ion-icon name="home" slot="start" class="device-icon"></ion-icon>
-        <ion-label>
-          <h2>{{ dispositivo.name }}</h2>
-          <p>{{ dispositivo.type }} - {{ dispositivo.location || 'Sin ubicación' }}</p>
-          <p [class.connected]="dispositivo.status === 'connected'" 
-             [class.disconnected]="dispositivo.status === 'disconnected'">
-            {{ dispositivo.status === 'connected' ? 'Conectado' : 'Desconectado' }}
-          </p>
-        </ion-label>
-        <ion-button 
-          fill="clear" 
-          color="danger"
-          (click)="removeDevice(dispositivo)">
-          <ion-icon name="trash" slot="icon-only"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-list>
+    <!-- Categorías -->
+    <div *ngIf="dispositivos.length > 0" class="categories-container">
+      <ng-container *ngFor="let category of categories">
+        <div 
+          *ngIf="dispositivosPorCategoria[category] && dispositivosPorCategoria[category].length > 0"
+          class="category-section">
+          <div class="category-header" (click)="goToCategory(category)">
+            <ion-icon [name]="getCategoryIcon(category)" class="category-icon"></ion-icon>
+            <h3>{{ getCategoryName(category) }}</h3>
+            <ion-icon name="chevron-forward" class="chevron-icon"></ion-icon>
+          </div>
+          
+          <ion-list>
+            <ion-item 
+              *ngFor="let dispositivo of dispositivosPorCategoria[category]" 
+              class="dispositivo-item">
+              <ion-icon [name]="dispositivo.icon" slot="start" class="device-icon"></ion-icon>
+              <ion-label>
+                <h2>{{ dispositivo.name }}</h2>
+                <p>{{ dispositivo.location || 'Sin ubicación' }}</p>
+                <p [class.connected]="dispositivo.status === 'connected'" 
+                   [class.disconnected]="dispositivo.status === 'disconnected'">
+                  {{ dispositivo.status === 'connected' ? 'Conectado' : 'Desconectado' }}
+                </p>
+              </ion-label>
+              <ion-button 
+                fill="clear" 
+                color="danger"
+                (click)="removeDevice(dispositivo)">
+                <ion-icon name="trash" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ng-container>
+    </div>
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button (click)="goToAddDevice()">

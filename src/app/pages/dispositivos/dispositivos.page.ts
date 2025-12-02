@@ -11,6 +11,8 @@ import { AlertController } from '@ionic/angular';
 })
 export class DispositivosPage implements OnInit {
   dispositivos: Device[] = [];
+  dispositivosPorCategoria: { [key: string]: Device[] } = {};
+  categories: string[] = ['luces', 'seguridad', 'clima', 'consumo', 'general'];
 
   constructor(
     private deviceService: DeviceService,
@@ -26,7 +28,59 @@ export class DispositivosPage implements OnInit {
     
     this.deviceService.getDevices().subscribe(devices => {
       this.dispositivos = devices;
+      this.organizeByCategory();
     });
+  }
+
+  organizeByCategory() {
+    this.dispositivosPorCategoria = {
+      luces: [],
+      seguridad: [],
+      clima: [],
+      consumo: [],
+      general: []
+    };
+    
+    this.dispositivos.forEach(device => {
+      if (this.dispositivosPorCategoria[device.category]) {
+        this.dispositivosPorCategoria[device.category].push(device);
+      }
+    });
+  }
+
+  getCategoryName(category: string): string {
+    const names: { [key: string]: string } = {
+      'luces': 'Control de Luces',
+      'seguridad': 'Seguridad del Hogar',
+      'clima': 'Clima y Temperatura',
+      'consumo': 'Medidores de Consumo',
+      'general': 'Dispositivos Generales'
+    };
+    return names[category] || category;
+  }
+
+  getCategoryIcon(category: string): string {
+    const icons: { [key: string]: string } = {
+      'luces': 'bulb',
+      'seguridad': 'shield-checkmark',
+      'clima': 'thermometer',
+      'consumo': 'flash',
+      'general': 'hardware-chip'
+    };
+    return icons[category] || 'cube';
+  }
+
+  goToCategory(category: string) {
+    const routes: { [key: string]: string } = {
+      'luces': '/control-luces',
+      'seguridad': '/seguridad',
+      'clima': '/clima',
+      'consumo': '/metricas',
+      'general': '/dispositivos'
+    };
+    if (routes[category]) {
+      this.router.navigate([routes[category]]);
+    }
   }
 
   goToAddDevice() {

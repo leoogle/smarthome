@@ -1,0 +1,13 @@
+<div class="tabs-menu-container">
+  <div class="tabs-menu">
+    <div 
+      *ngFor="let tab of tabs" 
+      class="tab-item"
+      [class.active]="isActive(tab.route)"
+      (click)="navigateTo(tab.route)">
+      <ion-icon [name]="tab.icon"></ion-icon>
+      <span class="tab-label">{{ tab.name }}</span>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Seguridad del Hogar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="seguridad-content">
+  <div class="seguridad-container">
+    <h2 class="page-title">Sistema de Seguridad</h2>
+
+    <div *ngIf="dispositivos.length === 0" class="empty-state">
+      <ion-icon name="shield-outline" class="empty-icon"></ion-icon>
+      <p>No hay dispositivos de seguridad conectados</p>
+    </div>
+
+    <ion-list *ngIf="dispositivos.length > 0">
+      <ion-item 
+        *ngFor="let dispositivo of dispositivos" 
+        class="dispositivo-item">
+        <div class="device-content">
+          <div class="device-header">
+            <ion-icon [name]="dispositivo.icon" class="device-icon"></ion-icon>
+            <div class="device-info">
+              <h2>{{ dispositivo.name }}</h2>
+              <p>{{ dispositivo.location }}</p>
+              <p [class.connected]="dispositivo.status === 'connected'" 
+                 [class.disconnected]="dispositivo.status === 'disconnected'">
+                {{ dispositivo.status === 'connected' ? 'Conectado' : 'Desconectado' }}
+              </p>
+            </div>
+          </div>
+          
+          <div class="device-controls">
+            <ion-badge [color]="getStatusColor(dispositivo)" class="status-badge">
+              {{ getStatusText(dispositivo) }}
+            </ion-badge>
+            
+            <ion-toggle 
+              *ngIf="dispositivo.type === 'alarm' || dispositivo.type === 'camera'"
+              [checked]="dispositivo.type === 'alarm' ? dispositivo.value?.armed : dispositivo.value?.recording"
+              (ionChange)="toggleDevice(dispositivo)">
+            </ion-toggle>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+
